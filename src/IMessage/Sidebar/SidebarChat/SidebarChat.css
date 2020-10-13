@@ -1,0 +1,28 @@
+.sidebarChat {
+  display: flex;
+  padding: var(--padding);
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+  cursor: pointer;
+}
+.sidebarChat:hover {
+  background-color: lightgray;
+  transform: scale(1.05);
+}
+.sidebarChat__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: var(--margin);
+  overflow: hidden;
+}
+.sidebarChat__infoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.sidebarChat__timestamp {
+  font-size: 10px;
+  font-weight: 500;
+  color: gray;
+  margin-left: 4px;
+}
