@@ -1,24 +1,24 @@
 import { Avatar } from '@material-ui/core'
 import React from 'react'
 import './SidebarChat.css'
-const SidebarChat = ({
-    channelName = 'Testing',
-    channelImage = 'https://i.pinimg.com/736x/77/f1/1f/77f11fb82348190bc966661ad45c6763.jpg',
-    message='Last seen Message',
-    timestamp='TimeStamp Goes here'
+const SidebarChat = ({id,
+    channelName,
+    channelImage ,
+    lastMessage,
+    timestamp,handleClick
 }) => {
-   
+
     return (
-        <div className='sidebarChat'>
+        <div className='sidebarChat' onClick={()=>handleClick(id,channelName)} key={id}>
             <Avatar src={channelImage || null}>
-{channelName[0]}
+                {channelName[0]}
             </Avatar>
             <div className='sidebarChat__info'>
             <div className='sidebarChat__infoHeader'>
                 <h3>{channelName }</h3>
-                <p><span className='sidebarChat__timestamp' >{timestamp}</span></p>
+                <p><span className='sidebarChat__timestamp' >{`new Date(timestamp).toISOString()`}</span></p>
             </div>  
-                <p>{message || '........'}</p>
+                <p>{lastMessage || '........'}</p>
             </div>  
         </div>
     )
