@@ -13,7 +13,7 @@
   border-bottom: 1px solid lightgray;
   display: flex;
 }
-.chat__body {
+.chat__messages {
   padding: var(--padding);
   flex: 1;
   background-color: white;
