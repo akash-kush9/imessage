@@ -10,4 +10,10 @@ import firebase from 'firebase'
     measurementId: "G-XD325G166Y"
   };
 
-  const 
+  const firebaseApp =  firebase.initializeApp(firebaseConfig);
+  const db = firebaseApp.firestore();
+  const auth = firebase.auth();
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+  export default db;
+  export {auth,googleProvider};
