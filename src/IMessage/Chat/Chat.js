@@ -8,6 +8,7 @@ import db from '../../firebase'
 import firebase from 'firebase'
 import Message from './Message/Message'
 import './Chat.css'
+import FlipMove from 'react-flip-move';
 const Chat = () => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser)
@@ -19,13 +20,13 @@ const Chat = () => {
         // lastMessage :
         db.collection('channels').doc(channel?.channelId).collection('messages').add({
              message : message,timestamp:firebase.firestore.FieldValue.serverTimestamp(),
-             user : user.email , username:user.displayName
+             email : user.email , username:user.displayName, photoURL : user.photoURL
         })
         setMessage('')
     }
     useEffect(() => {
         if (channel.channelId){
-            db.collection('channels').doc(channel?.channelId).collection('messages').orderBy('timestamp',"desc").onSnapshot(snapshot =>{
+            db.collection('channels').doc(channel?.channelId).collection('messages').orderBy('timestamp',"asc").onSnapshot(snapshot =>{
                 setMessages(snapshot.docs.map(doc=>({
                     id:doc.id,
                     ...doc.data()
@@ -39,26 +40,30 @@ const Chat = () => {
 
         <div className='chat' key={channel?.channelId}>
             <div className='chat__header'>
-    <h4>To: <span className='chat__name'> {channel?.channelName}</span></h4>
+                <h4>To: <span className='chat__name'> {channel?.channelName}</span></h4>
                 <strong>Details</strong>
             </div>
             <div className='chat__messages'>
+                  <FlipMove>
                 {
                     messages.map(messageDetails =>(
-                    <Message messageDetails={} /> ))}
-                    <div className='chat__input'>
-                        <form >
-                            <input placeholder='iMessage' onChange={(e)=>{setMessage(e.target.value)}}  value={message} type='text' />
-                            <button onClick={sendMessage} >Send Message</button>
-                        </form>
-                        <IconButton>
-                            <MicOutlined/>
-                        </IconButton>
-                    </div>
-        
+                    <Message messageDetails={messageDetails} id={messageDetails.id} /> ))
+                }
+                </FlipMove>
+            </div>
+
+                <div className='chat__input'>
+                    <form >
+                        <input placeholder='iMessage' onChange={(e)=>{setMessage(e.target.value)}}  value={message} type='text' />
+                        <button onClick={sendMessage} >Send Message</button>
+                    </form>
+                    <IconButton>
+                        <MicOutlined/>
+                    </IconButton>
                 </div>
-            )
-        }
+        
+        </div>
+    )}
         
         export default Chat
         

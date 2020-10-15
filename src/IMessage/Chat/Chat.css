@@ -7,6 +7,9 @@
   border-left: 1px solid lightgray;
   background-color: var(--bg);
 }
+
+
+
 .chat__header {
   padding: var(--padding);
   justify-content: space-between;
@@ -17,6 +20,10 @@
   padding: var(--padding);
   flex: 1;
   background-color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}.chat__messages::-webkit-scrollbar{
+  display: none;
 }
 .chat__header > h4 {
   color: gray;
