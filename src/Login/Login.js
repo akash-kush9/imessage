@@ -5,8 +5,7 @@ import {auth,googleProvider} from './../firebase'
 const Login = () => {
     const signIn = () => {
         auth.signInWithPopup(googleProvider).then(authuser=>{
-            console.log(authuser)
-                alert(`User ${authuser.displayName} logged in successfully`)
+                alert(`User ${authuser.user.displayName} logged in successfully`)
             }).catch(error => alert(error.message))
     }
     return (
