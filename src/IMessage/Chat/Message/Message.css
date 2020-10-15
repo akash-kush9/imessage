@@ -1,0 +1,62 @@
+.message{
+    display: flex;
+    margin:10px;
+    width:fit-content;
+    position: relative;
+    max-width: 75%;
+    word-break: break-all;
+
+}
+
+.messageInfo > p {
+    background-color: #f3f3f5;
+    font-size: medium;
+    border-radius: 20px;;
+    margin:0px 10px 8px 10px;
+    margin-right: auto;
+    padding: 10px;word-wrap: break-word;
+}
+
+
+.messageInfo > small {
+    color:gray;
+    position: absolute;
+    font-size:10px;
+    bottom:-8px;
+    right:0px;
+}
+.message__sender{
+    margin-left: auto;;
+}
+.message__sender > .message__avatar {
+    order:1;
+}
+.message__sender > .messageInfo> p {
+    background-color: #3cabfa;
+    margin-right: 10px;;
+    
+}
+.message__sender > .messageInfo > small {
+   
+    left:0px;
+}
+/* .messageInfo{
+    margin-left: 5px;;
+    padding: 0 5px;
+    height: 100%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+
+}
+.messageInfo > p {
+    width:100%
+}
+.message__timestamp{
+    color: gray;
+    font-size: 10px;
+    margin-left: auto;
+    border: 1px solid green;
+    margin-right: 0px;;
+
+} */
